@@ -1,0 +1,10 @@
+{
+    "plugins": ["eslint-plugin-vue"],
+    "extends": [
+        "plugin:vue/vue3-essential",
+        "eslint:recommended"
+    ],
+    "rules": {
+        "vue/no-mutating-props": "off"
+    }
+}
