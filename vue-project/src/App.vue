@@ -93,8 +93,8 @@ export default {
       let array = this.notes
       let search = this.search
 
-      if (!search) return array //Чтобы поиск не искал пустую строку, т.е. если search равно false
-      search = search.trim().toLowerCase() //Избовляем то, что будем искать от пробелов (trim()) и приводим это к нижнему регистру (toLowerCase())
+      if (!search) return array 
+      search = search.trim().toLowerCase() 
 
       array = array.filter (function (item) {if (item.title.toLowerCase().indexOf(search) !== -1) 
       return item})
