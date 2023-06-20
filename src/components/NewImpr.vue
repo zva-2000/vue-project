@@ -4,15 +4,15 @@
     </div>
 </template>
   
-<script>
-  export default {
-    props: {
-      NewImr: {
+<script setup>
+
+defineProps({
+  NewImr: {
         type: String,
         required: true
-      },
-    }
-  }
+}
+})
+
 </script>
   
 <style lang="scss" scoped>

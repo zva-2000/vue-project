@@ -7,20 +7,20 @@
 
 </template>
 
-<script>
+<script setup>
 
-export default {
-  props: {
-    grid: {
+
+const props = defineProps({
+  grid: {
           type: Boolean,
           required: true
         }
-  },
-  methods: {
-    ChangeGrid () {
-      this.$emit('ChangeGrid', this.grid)
-    }
-  }
+      })
+
+const emit = defineEmits(['ChangeGrid'])
+
+const ChangeGrid = () => {
+  emit('ChangeGrid', props.grid)
 }
 
 </script>
