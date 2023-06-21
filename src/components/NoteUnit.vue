@@ -5,10 +5,6 @@
     <div class="note-header" :class="{ full: !grid }">
 
       <changeInput :value="note.title" :isVisible="isVisible" @update:value="note.title = $event"/> 
-      
-      <!-- <p v-show="isVisible" @click="Visibility" style="cursor: pointer;">{{ note.title }}</p>
-
-      <input type="text" placeholder="Введите текст" v-show="!isVisible" v-model="note.title">  -->
 
       <p style="cursor: pointer" @click="$emit('remove', index)">x</p>
 
@@ -17,10 +13,6 @@
     <div class="note-body">
 
       <changeInput :value="note.descr" :isVisible="isVisible" @update:value="note.descr = $event"/> 
-
-        <!-- <p v-show="isVisible" @click="toggleVisibility" style="cursor: pointer;">{{ note.descr }}</p>
-        
-        <textarea type="text" placeholder="Введите текст" v-show="!isVisible" v-model="note.descr"/> -->
 
         <p>{{ note.impr }}</p>       
         <span>{{ note.date }}</span>
@@ -33,36 +25,30 @@
 
 </template>
 
-<script>
+<script setup>
 
 import changeInput from './ChangeInput.vue';
 
-export default {
-  components: {
-    changeInput
-  },
-  data () {
-    return {
-      isVisible: true,
-      value: ''
-    }},
-    props: {
-        note: {
-            type: Object,
-            required: true
-        },
-        grid: {
-          type: Boolean,
-          required: true,
-        }
-    },
-    methods: {
-        Visibility() {
-            this.isVisible = !this.isVisible;
-        }
-    }
-}
+import { ref } from vue;
 
+const props = defineProps({
+  note: {
+    type: Object,
+    required: true
+  },
+  grid: {
+    type: Boolean,
+    required: true,
+  }
+})
+
+const isVisible = true
+
+var value = ref('')
+
+function Visibility() {
+  isVisible = !isVisible;
+}
 
 </script>
 

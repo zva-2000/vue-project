@@ -8,35 +8,25 @@
 
 </template>
 
-<script>
+<script setup>
 
 import noteUnit from '@/components/NoteUnit.vue'
 
-export default {
-  components: {
-    noteUnit
-  },
-  data: () => {
-    return {
-      changeN: true,
-      curIndex: undefined
-    }
-  },
-    props: {
-        notes: {
-          type: Array,
-          required: true
-        },
-        grid: {
-          type: Boolean,
-          required: true
-        }
+const props = defineProps({
+    notes: {
+      type: Array,
+      required: true
     },
-    methods: {
-        remove (index) {
-            this.$emit ('remove', index)
-        }
-}
+    grid: {
+      type: Boolean,
+      required: true
+    }
+})
+
+const emit = defineEmits(['remove'])
+
+const remove = (index) => {
+   emit('remove', index)
 }
 
 
