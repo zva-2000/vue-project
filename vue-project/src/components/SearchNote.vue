@@ -12,27 +12,28 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    value: {
+<script setup> 
+
+import { watch, defineProps, defineEmits, ref } from 'vue';
+
+const props = defineProps({
+  value: {
       type: String,
       required: true
     },
-    placeholder: {
+  placeholder: {
       type: String,
       default: 'Search'
     }
-  },
-  data () {
-    return { search: this.value }
-  },
-  watch: {
-    search (val) {
-      this.$emit('search', val);
-    }
-  }
-}
+})
+
+let search = ref(props.value)
+
+const emit = defineEmits(['search'])
+
+watch(search, (value) => {
+    emit('search', value)}
+
 </script>
 
 <style scoped>

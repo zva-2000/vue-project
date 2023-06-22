@@ -19,38 +19,25 @@
 
 </template>
 
-<script>
-export default {
-    props: {
-    importants: {
+<script setup>
+
+import { defineProps, defineEmits } from 'vue'
+
+const props = defineProps({
+  importants: {
       type: Array,
       required: true
     },
-    impr:{
-      type: String,
-      required: true   
-    },
-    note: {
+  note: {
       type: String,
       required: true
-    },
-    title: {
-        type: String,
-        required: true
-    },
-    descr: {
-        type: String,
-        required: true
     }
-    },
-    methods: {
-    addNote () {
-      this.$emit('addNote', this.note)
-    },
-    changeTitle () {
-      this.$emit('changeTitle', event.target.this.title)
-    }
-    }
+  })
+
+const emit = defineEmits(['addNote'])
+
+const addNote = () => {
+  emit('addNote', props.note)
 }
 
 </script>

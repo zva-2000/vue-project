@@ -4,15 +4,17 @@
     </div>
 </template>
   
-<script>
-  export default {
-    props: {
-        NewMessege: {
+<script setup>
+
+import { defineProps } from 'vue'
+
+defineProps({
+  NewMessege: {
         type: String,
         required: true
-      },
-    }
-  }
+}
+})
+
 </script>
   
 <style lang="scss" scoped>
