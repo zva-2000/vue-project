@@ -5,10 +5,12 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        value: {
+<script setup>
+
+import { defineProps, defineEmits, ref } from 'vue'
+
+const props = defineProps({
+    value: {
             type: String,
             required: true
         },
@@ -16,16 +18,14 @@ export default {
             type: Boolean,
             required: true
         }
-    },
-    data() {
-        return {
-            internalValue: this.value,
-        };
-    },
-    methods: {
-        inputChange() {
-                this.$emit('update:value', this.internalValue);
-        }
-    }
+})
+
+const internalValue = ref(props.value)
+
+const emit = defineEmits(['inputChange'])
+
+const inputChange = () => {
+    emit('update:value', internalValue)
 }
+
 </script>
